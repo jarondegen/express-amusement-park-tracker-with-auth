@@ -1,0 +1,27 @@
+extends layout.pug
+
+block content
+  div
+    if errors
+      ul
+        each error in errors
+          li= error
+  div
+    form(method='post' action='/user/register')
+      input(type='hidden' name='_csrf' value=csrfToken)
+      div
+        label First Name
+          input(type='text' name='firstName')
+      div
+        label Last Name
+          input(type='text' name='lastName')
+      div
+        label Email
+          input(type='email' name='email')
+      div
+        label Password
+          input(type='password' name='password')
+      div
+        label Confirm Password
+          input(type='password' name='confirmPassword')
+      button(type='submit') Create User

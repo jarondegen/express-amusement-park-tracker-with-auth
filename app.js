@@ -3,7 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-
+const router = require('./routes/user');
 const { environment, sessionSecret } = require('./config');
 const indexRoutes = require('./routes');
 const parkRoutes = require('./routes/park');
@@ -12,7 +12,7 @@ const attractionRoutes = require('./routes/attraction');
 const app = express();
 
 app.set('view engine', 'pug');
-
+app.use(router);
 
 app.use(session({
   secret: sessionSecret,
